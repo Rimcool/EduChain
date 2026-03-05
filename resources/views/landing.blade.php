@@ -94,6 +94,13 @@
                 <a href="#scanner" class="btn btn-primary">Verify a Degree</a>
                 <a href="/register" class="btn">Join as Recruiter</a>
             </div>
+            
+            <div class="mt-8 text-center text-gray-400">
+                <p>Or verify a degree directly:</p>
+                <a href="/verify" class="text-blue-400 hover:text-blue-300 underline">
+                    Verify Degree
+                </a>
+            </div>
         </div>
     </section>
 

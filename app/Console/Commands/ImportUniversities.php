@@ -21,6 +21,8 @@ class ImportUniversities extends Command
             University::firstOrCreate(
                 ['name' => $uni['name']],
                 [
+                    'location'          => $uni['city'],
+                    'email'             => strtolower(str_replace(' ', '', $uni['name'])) . '@edu.pk',
                     'category'          => $uni['category'],
                     'sector'            => $uni['sector'],
                     'province'          => $uni['province'],

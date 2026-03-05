@@ -21,15 +21,11 @@ return new class extends Migration
             $table->timestamps();
 
             // Your added fields for Educhain
-            $table->string('role'); // 'super_admin', 'university_admin', 'student'
-            // Important: 'university_id' foreign key assumes 'universities' table exists.
-            // Ensure create_universities_table runs BEFORE this migration.
-            $table->foreignId('university_id')->nullable()->constrained();
-            $table->string('profile_picture')->nullable(); // Optional profile picture
-            $table->string('phone_number')->nullable(); // Optional phone number
-            $table->text('bio')->nullable(); // Optional bio or description
-            $table->string('address')->nullable(); // Optional address
-            $table->date('date_of_birth')->nullable(); // Optional date of birth
+            $table->enum('role', ['recruiter', 'university', 'super_admin', 'student'])->default('recruiter');
+            $table->enum('status', ['pending', 'active', 'suspended'])->default('active');
+            $table->string('university_name')->nullable(); // only for university role
+            $table->string('company_name')->nullable(); // only for recruiter role
+            $table->string('phone')->nullable();
         });
 
         // These are fine where they are, assuming you want them in the same migration file

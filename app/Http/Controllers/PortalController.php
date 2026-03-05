@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\IssuedDegree;
-use App\Models\University;
-use App\Services\HashService;
+use App\Models\{IssuedDegree, University};
+use App\Services\{HashService, ActivityLogger};
 use Illuminate\Http\Request;
 
 class PortalController extends Controller
 {
     public function index()
     {
-        $degrees = IssuedDegree::where('university_name', 'like', '%' . auth()->user()->university_name . '%')
-            ->latest()->get();
+        $uniName = auth()->user()->university_name;
+        $degrees = IssuedDegree::where('university_name', 'like', "%{$uniName}%")
+                    ->latest()->get();
 
-        return view('portal.index', compact('degrees'));
+        $stats = [
+            'total'        => $degrees->count(),
+            'this_month'   => $degrees->where('created_at', '>=', now()->startOfMonth())->count(),
+            'verified_count'=> \App\Models\Verification::where('university_name','like',"%{$uniName}%")->count(),
+        ];
+
+        return view('portal.index', compact('degrees', 'stats'));
     }
 
     public function issue(Request $request)
@@ -31,7 +37,12 @@ class PortalController extends Controller
         $hasher = new HashService();
         $hash   = $hasher->generate($data);
 
-        IssuedDegree::create([
+        // Check for duplicate
+        if (IssuedDegree::where('degree_hash', $hash)->exists()) {
+            return response()->json(['error' => 'This degree has already been issued.'], 409);
+        }
+
+        $degree = IssuedDegree::create([
             ...$data,
             'degree_hash' => $hash,
             'tx_hash'     => '0xEDU' . strtoupper(substr($hash, 0, 16)),
@@ -41,6 +52,60 @@ class PortalController extends Controller
         University::findByName($data['university_name'])
             ?->update(['is_on_educhain' => true]);
 
-        return response()->json(['success' => true, 'hash' => $hash]);
+        ActivityLogger::record(auth()->id(), 'degree_issued',
+            'Issued degree for ' . $data['student_name'], $data);
+
+        return response()->json(['success' => true, 'tx_hash' => $degree->tx_hash]);
+    }
+
+    public function bulk(Request $request)
+    {
+        $request->validate(['file' => 'required|file|mimes:csv,txt']);
+
+        $rows    = array_map('str_getcsv', file($request->file('file')->path()));
+        $headers = array_shift($rows);
+        $issued  = 0;
+        $skipped = 0;
+        $hasher  = new HashService();
+        $uniName = auth()->user()->university_name;
+
+        foreach ($rows as $row) {
+            if (count($row) < 4) continue;
+            $data = [
+                'student_name'    => $row[0],
+                'roll_number'     => $row[1],
+                'degree_title'    => $row[2],
+                'graduation_year' => $row[3],
+                'university_name' => $uniName,
+            ];
+
+            $hash = $hasher->generate($data);
+            if (IssuedDegree::where('degree_hash', $hash)->exists()) {
+                $skipped++;
+                continue;
+            }
+
+            IssuedDegree::create([
+                ...$data,
+                'degree_hash' => $hash,
+                'tx_hash'     => '0xEDU' . strtoupper(substr($hash, 0, 16)),
+                'issued_at'   => now(),
+            ]);
+            $issued++;
+        }
+
+        return response()->json([
+            'issued'  => $issued,
+            'skipped' => $skipped,
+            'message' => "{$issued} degrees issued, {$skipped} duplicates skipped.",
+        ]);
+    }
+
+    public function degrees()
+    {
+        $uniName = auth()->user()->university_name;
+        $degrees = IssuedDegree::where('university_name', 'like', "%{$uniName}%")
+                    ->latest()->paginate(20);
+        return view('portal.degrees', compact('degrees'));
     }
 }

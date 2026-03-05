@@ -22,5 +22,9 @@ class AppServiceProvider extends ServiceProvider
     {
         // Add this line
         Schema::defaultStringLength(191);
+        
+        // Register custom middleware
+        $this->app['router']->aliasMiddleware('role', \App\Http\Middleware\CheckRole::class);
+        $this->app['router']->aliasMiddleware('approved', \App\Http\Middleware\CheckApproved::class);
     }
 }

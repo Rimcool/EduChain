@@ -52,8 +52,8 @@ class DemoDegreesSeeder extends Seeder
             );
 
             // Mark the university as on EduChain
-            University::findByName($d['university_name'])
-                ?->update(['is_on_educhain' => true]);
+            University::where('name', 'like', "%{$d['university_name']}%")
+                ->update(['is_on_educhain' => true]);
         }
 
         $this->command->info('✅ Demo degrees seeded successfully.');

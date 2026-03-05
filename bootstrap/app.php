@@ -14,7 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         // Register your custom middleware with an alias
         $middleware->alias([
-            'role' => RoleMiddleware::class, // This is what you were looking for!
+            'role'     => \App\Http\Middleware\CheckRole::class,
+            'approved' => \App\Http\Middleware\CheckApproved::class,
+            'api.key'  => \App\Http\Middleware\CheckApiKey::class,
         ]);
 
         // You can also append global middleware here if needed
