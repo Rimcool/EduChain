@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .holographic-input {
+        background: linear-gradient(135deg, rgba(236, 91, 19, 0.05) 0%, rgba(236, 91, 19, 0.15) 100%);
+        border: 1px solid rgba(236, 91, 19, 0.3);
+        box-shadow: 0 0 15px rgba(236, 91, 19, 0.1);
+    }
+    .holographic-input:focus {
+        border-color: #ec5b13;
+        box-shadow: 0 0 20px rgba(236, 91, 19, 0.2);
+        outline: none;
+    }
+    .grid-bg {
+        background-image: 
+            linear-gradient(to right, rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+}

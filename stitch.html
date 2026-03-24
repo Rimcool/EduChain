@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "accent": "#a855f7",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#120b08",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .grid-bg {
+            background-image: 
+                linear-gradient(to right, rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+        .btn-3d {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 0 #b44208;
+            transition: all 0.1s ease;
+        }
+        .btn-3d:active {
+            transform: translateY(0px);
+            box-shadow: 0 0px 0 #b44208;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30">
+<div class="relative flex h-auto min-screen w-full flex-col overflow-x-hidden grid-bg">
+<nav class="flex items-center bg-transparent p-6 justify-between max-w-7xl mx-auto w-full z-10">
+<div class="flex items-center gap-2">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-tight">EduChain</h2>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Platform</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Institutions</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Security</a>
+<button class="text-primary text-sm font-bold border border-primary/30 px-6 py-2 rounded-lg hover:bg-primary/10 transition-colors">Login</button>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</nav>
+<main class="relative z-10">
+<div class="@container max-w-7xl mx-auto">
+<div class="flex flex-col gap-12 px-6 py-12 @[864px]:flex-row @[864px]:items-center @[864px]:py-24">
+<div class="flex flex-col gap-8 @[864px]:w-1/2">
+<div class="flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Web3 Verified</span>
+</div>
+<h1 class="text-slate-900 dark:text-white text-5xl font-black leading-[1.1] @[480px]:text-6xl @[864px]:text-7xl tracking-tight">
+                                Verify Your Degree on the <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Blockchain</span> instantly.
+                            </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg font-normal leading-relaxed max-w-xl">
+                                Experience the future of academic validation with our decentralized, secure, and instant verification portal. Tamper-proof credentials at your fingertips.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="btn-3d flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold tracking-wide">
+<span class="truncate">Start Verification</span>
+<span class="material-symbols-outlined ml-2">arrow_forward</span>
+</button>
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-bold transition-all">
+                                How it works
+                            </button>
+</div>
+</div>
+<div class="w-full @[864px]:w-1/2 relative group">
+<div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
+<div class="relative w-full aspect-square bg-gradient-to-br from-slate-800 to-background-dark rounded-3xl border border-slate-700 overflow-hidden flex items-center justify-center shadow-2xl neon-glow">
+<img alt="Futuristic 3D Portal Device" class="w-full h-full object-cover mix-blend-overlay opacity-40 absolute" data-alt="Futuristic 3D digital portal with glowing neon nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgsiDPYgje6ZWMn-3HMTzM3TGtsoY4e3SCJog8FOkq_evraWjYrUT1BQnLax8XCe5JqTuo-x5axgTniYjA9L3gM9fHTkqIA6jATX-DCoXZvdtT_xHs6la7ZpUdtgjPlXJtHIknPajXMy7JwExUR0KvsCxzkLPUOmpaV2W0tgdY_gTiHIdX_kODxbgMriZsLkUfwt_L6pdNMYEJXO_BW_5w0_LqtbWQ8uxjmNxeK6L7PGSphOhvDbqxP5Pv33UaOGXTpj96Q3dTVpk"/>
+<div class="relative z-10 flex flex-col items-center gap-6">
+<div class="w-48 h-48 rounded-full border-4 border-dashed border-primary/50 flex items-center justify-center p-4">
+<div class="w-full h-full rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center shadow-[0_0_50px_rgba(236,91,19,0.5)]">
+<span class="material-symbols-outlined text-7xl text-white">fingerprint</span>
+</div>
+</div>
+<div class="text-center px-8">
+<div class="h-2 w-32 bg-slate-700 rounded-full mx-auto mb-4 overflow-hidden">
+<div class="h-full w-2/3 bg-primary rounded-full"></div>
+</div>
+<p class="text-xs font-mono text-primary uppercase tracking-[0.2em]">Scanning Credentials...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-16 px-6 py-24 max-w-7xl mx-auto @container">
+<div class="flex flex-col gap-6 text-center items-center">
+<h2 class="text-slate-900 dark:text-white text-4xl font-bold tracking-tight @[480px]:text-5xl">
+                        Why Choose EduChain?
+                    </h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">
+                        Our platform leverages cutting-edge blockchain technology to ensure your credentials are tamper-proof and universally recognized.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 p-8 backdrop-blur-sm hover:border-primary/50 transition-all">
+<div class="text-primary bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Instant Verification</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Verify credentials in seconds, eliminating weeks of administrative back-and-forth between institutions.</p>
+</div>
+</div>
+<div class="flex flex-col gap-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 p-8 backdrop-blur-sm hover:border-primary/50 transition-all">
+<div class="text-primary bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">shield</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Immutable Records</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Once stored, records cannot be altered or deleted. Your academic legacy is permanently secured.</p>
+</div>
+</div>
+<div class="flex flex-col gap-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 p-8 backdrop-blur-sm hover:border-primary/50 transition-all">
+<div class="text-primary bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">public</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Global Portability</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Share your verified profile with employers and universities worldwide without physical documentation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 py-12 flex flex-wrap gap-8">
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-2xl p-8 bg-white dark:bg-background-dark shadow-sm border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-widest">Degrees Verified</p>
+<p class="text-slate-900 dark:text-primary text-4xl font-black">1.2M+</p>
+</div>
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-2xl p-8 bg-white dark:bg-background-dark shadow-sm border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-widest">Institutions</p>
+<p class="text-slate-900 dark:text-primary text-4xl font-black">500+</p>
+</div>
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-2xl p-8 bg-white dark:bg-background-dark shadow-sm border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-widest">Security Uptime</p>
+<p class="text-slate-900 dark:text-primary text-4xl font-black">99.9%</p>
+</div>
+</div>
+</div>
+<div class="@container px-6 py-24 bg-primary relative overflow-hidden">
+<div class="absolute inset-0 bg-primary opacity-90"></div>
+<div class="absolute inset-0 grid-bg opacity-30"></div>
+<div class="relative z-10 flex flex-col items-center gap-10 text-center max-w-3xl mx-auto">
+<div class="flex flex-col gap-4">
+<h2 class="text-white text-4xl font-black tracking-tight @[480px]:text-6xl">
+                            Ready to secure your academic future?
+                        </h2>
+<p class="text-white/80 text-lg font-medium">
+                            Join thousands of graduates and top-tier institutions already building trust with EduChain.
+                        </p>
+</div>
+<button class="bg-white text-primary hover:bg-slate-100 px-10 py-5 rounded-xl text-xl font-bold shadow-2xl transition-all transform hover:scale-105 active:scale-95">
+                        Get Started Now
+                    </button>
+</div>
+</div>
+</main>
+<footer class="bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 py-12">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="text-primary flex size-8 items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold">EduChain</h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">© 2024 EduChain Protocol. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">language</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">share</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">help</span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .holographic-input {
+            background: linear-gradient(135deg, rgba(236, 91, 19, 0.05) 0%, rgba(236, 91, 19, 0.15) 100%);
+            border: 1px solid rgba(236, 91, 19, 0.3);
+            box-shadow: 0 0 15px rgba(236, 91, 19, 0.1);
+        }
+        .holographic-input:focus {
+            border-color: #ec5b13;
+            box-shadow: 0 0 20px rgba(236, 91, 19, 0.2);
+            outline: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- TopAppBar Navigation -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Verification</h2>
+</div>
+<!-- Progress Indicator -->
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between items-end">
+<p class="text-slate-900 dark:text-slate-100 text-base font-medium leading-normal">Identity Verification</p>
+<p class="text-primary text-sm font-bold leading-normal">Step 2 of 3</p>
+</div>
+<div class="rounded-full bg-primary/20 h-2 w-full overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 66%;"></div>
+</div>
+</div>
+<!-- Hero Section: Character and Device -->
+<div class="flex w-full grow @container p-4">
+<div class="w-full gap-4 overflow-hidden aspect-[4/3] rounded-xl flex relative bg-primary/5 border border-primary/10">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover flex items-center justify-center" data-alt="Officer character pointing to futuristic 3D tablet device" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTVhjpRaMDAjCfc_zBVek6nLa3LJFNqtoV8uIjPYIdkCdu2a-2HDSsA7WvtInPp-3ZCzPTyHAoDWS4HvN_bW-wnMJY4-A8MrnkV8s5KYHpb3ReKf-hhEEEVJt2MHVmZlQnStZa0AmVr0BPAjCKcLv30PU0WFCJ1m6xM7g8ACEGV5Mw3MVmHMFEDqMqsvS_6TL_IjKh-Od1PszC7CW7HMHarTwsc_wt8WOISrujnDYhIaXWfoVmDuH8XFYSRZF_oPgyRzhoFOPZQug");'>
+<!-- Overlay representation of the holographic interaction -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent flex flex-col justify-end p-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-4xl">ads_click</span>
+<span class="text-primary font-bold text-sm tracking-widest uppercase">Awaiting Input</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Heading and Subtext -->
+<div class="px-4 pt-6 pb-2 text-center">
+<h3 class="text-slate-900 dark:text-slate-100 tracking-tight text-2xl font-bold leading-tight">Educational Details</h3>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal mt-2">Please provide your graduation details for the secure verification process.</p>
+</div>
+<!-- Futuristic Form Fields -->
+<div class="flex flex-col gap-5 p-4 mt-4">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-primary/80 px-1">Degree Title</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/60">school</span>
+<input class="holographic-input w-full h-14 pl-12 pr-4 rounded-lg text-slate-100 placeholder:text-slate-500 bg-transparent transition-all" placeholder="e.g. Bachelor of Science" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-primary/80 px-1">Graduation Year</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/60">calendar_today</span>
+<input class="holographic-input w-full h-14 pl-12 pr-4 rounded-lg text-slate-100 placeholder:text-slate-500 bg-transparent transition-all" placeholder="YYYY" type="number"/>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="p-4 mt-auto mb-8">
+<button class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-all active:scale-95">
+<span>Continue Verification</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="h-4"></div>
+</div>
+</body></html>
